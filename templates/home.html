@@ -16,22 +16,10 @@
 
      for (var i = 0; i < anchors.length; i++) {
        anchor = anchors[i];
-       direction = anchor.dataset.direction;
-       console.log(direction);
        anchor.addEventListener('click', function(event) {
 	 event.preventDefault();
 
-	 /*xmlhttp.onreadystatechange = function() {
-           if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
-             if (xmlhttp.status == 200) {
-               console.log("Command successfully received by the raspberry pi")
-             } else if (xmlhttp.status == 400) {
-               alert('There was an error 400');
-             } else {
-               alert('something else other than 200 was returned');
-             }
-           }
-	 };*/
+	 var direction = this.dataset.direction;
 	 var xmlhttp = new XMLHttpRequest();
 	 xmlhttp.open("GET", "/navigate/" + direction, true);
 	 xmlhttp.send();

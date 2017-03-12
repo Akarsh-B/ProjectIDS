@@ -12,7 +12,7 @@ def home():
 def navigation(direction):
 	if (direction == "forward"):
 		ser.write(b'150,0,150,0')
-	elif(direction == "backward"):
+	elif(direction == "reverse"):
 		ser.write(b'0,150,0,150')
 	elif (direction == "left"):
 		ser.write(b'0,150,150,0')
