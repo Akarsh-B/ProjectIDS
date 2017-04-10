@@ -1,2 +1,2 @@
 # Rpi-Controller
-Raspberry pi Remote control using Python-Flask
+Raspberry pi Remote control and video streaming using Python-Flask
