@@ -4,12 +4,15 @@
     <link rel="stylesheet" href="/static/home.css" />
   </head>
   <body>
+
     <h1><center>Raspberry pi car controller</center></h1>
+    <center> <img src = "{{ url_for('video_feed') }}"> <br /> <br />
     <a href="#" data-direction="forward" class="button">Move Forward</a>
     <a href="#" data-direction="reverse" class="button">Move Reverse</a>
     <a href="#" data-direction="left" class="button">Move Left</a>
     <a href="#" data-direction="right" class="button">Move Right</a>
     <a href="#" data-direction="stop" class="button">Stop</a>
+    </center>
 
     <script type="text/javascript">
      var anchors = document.getElementsByTagName('a');
