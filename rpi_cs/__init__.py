@@ -1,10 +1,10 @@
 from flask import Flask, render_template, Response
 from serial import Serial
-from camera_pi import Camera
+from rpi_cs.camera import Camera
 
 
 app = Flask(__name__)
-# ser = Serial("/dev/ttyUSB0", 9600)
+ser = Serial("/dev/ttyUSB0", 9600)
 
 
 @app.route('/')
@@ -40,7 +40,3 @@ def navigation(direction):
     elif (direction == "stop"):
         ser.write(b'0,0,0,0')
     return ''
-
-
-if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8000, debug="True")
