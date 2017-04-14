@@ -1,4 +1,4 @@
-# Rpi-Controller
+# IDS-Project
 
 Intrusion Detection Using RaspberryPi and Arduino
 ```
