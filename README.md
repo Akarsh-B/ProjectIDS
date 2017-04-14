@@ -1,7 +1,11 @@
 # Rpi-Controller
 
-Raspberry pi Remote control and video streaming using Python-Flask
-
+Intrusion Detection Using RaspberryPi and Arduino
+Functions:
+-RFID Detection[To be added]
+-Face Detection
+-Face Recognition
+-Robot Movement using Video Streaming
 ## Usage
 
 ```
