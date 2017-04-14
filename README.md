@@ -7,6 +7,7 @@ Functions:
 -Face Detection
 -Face Recognition
 -Robot Movement using Video Streaming
+-Face Tracking to be done
 ```
 ## Usage
 
