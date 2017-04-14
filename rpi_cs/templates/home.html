@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>Raspberry Pi Car Control</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/home.css">
+  </head>
+
+  <body>
+
+    <div class="container">
+      <h1 class="text-center mt-3 mb-3">Raspberry Pi Car Controller</h1>
+
+      <div class="row">
+	<div class="col-md-8 offset-md-2 text-center mt-3 mb-3">
+	  <img src = "{{ url_for('video_feed') }}">
+	</div>
+	<div class="col-md-8 offset-md-2 text-center mt-3 mb-3">
+	  <a href="#" data-direction="forward" class="btn btn-primary">Move Forward</a>
+	  <a href="#" data-direction="reverse" class="btn btn-primary">Move Reverse</a>
+	  <a href="#" data-direction="left" class="btn btn-primary">Move Left</a>
+	  <a href="#" data-direction="right" class="btn btn-primary">Move Right</a>
+	  <a href="#" data-direction="stop" class="btn btn-primary">Stop</a>
+	</div>
+      </div>
+
+    </div>
+
+    <script type="text/javascript">
+     var anchors = document.getElementsByTagName('a');
+
+     for (var i = 0; i < anchors.length; i++) {
+       anchor = anchors[i];
+       anchor.addEventListener('click', function(event) {
+	 event.preventDefault();
+
+	 var direction = this.dataset.direction;
+	 var xmlhttp = new XMLHttpRequest();
+	 xmlhttp.open("GET", "/navigate/" + direction, true);
+	 xmlhttp.send();
+       })
+     }
+    </script>
+  </body>
+</html>
