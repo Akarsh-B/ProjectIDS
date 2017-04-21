@@ -1,11 +1,11 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, request
 from serial import Serial
-from rpi_cs.camera import Camera
+from threading import Thread
 from rpi_cs.face_detection import FaceDetection
 
 
 app = Flask(__name__)
-ser = Serial("/dev/ttyUSB0", 9600)
+# ser = Serial("/dev/ttyUSB0", 9600)
 
 
 @app.route('/')
@@ -43,17 +43,20 @@ def video_feed():
 @app.route("/navigate/<direction>")
 def navigation(direction):
 
+    left = request.args.get('left')
+    right = request.args.get('right')
+
     if (direction == "forward"):
-        ser.write(b'150,0,150,0')
+        ser.write('{},0,{},0'.format(left, right).encode('utf-8'))
 
     elif(direction == "reverse"):
-        ser.write(b'0,150,0,150')
+        ser.write('0,{},0,{}'.format(left, right).encode('utf-8'))
 
     elif (direction == "left"):
-        ser.write(b'0,150,150,0')
+        ser.write('0,{},{},0'.format(left, right).encode('utf-8'))
 
     elif (direction == "right"):
-        ser.write(b'150,0,0,150')
+        ser.write('{},0,0,{}'.format(left, right).encode('utf-8'))
 
     elif (direction == "stop"):
         ser.write(b'0,0,0,0')

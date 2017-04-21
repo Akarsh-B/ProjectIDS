@@ -5,6 +5,7 @@ and sends cropped pictures of faces to the server
 
 import cv2
 import requests
+from concurrent.futures import ThreadPoolExecutor
 
 
 SERVER_URL = 'http://127.0.0.1:5000/image'
