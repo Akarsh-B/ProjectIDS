@@ -13,7 +13,7 @@ void setup() {
   pan.attach(9); // Attach Pan Servo to pin 9
   tilt.attach(10); // Attach Tilt Servo to pin 10 
   pan.write(pan_position);  // Let the initial Pan Servo position be 90 degree
-  tilt.write(tilt_position); // Let the initial Tilt Servo position be 90 degree
+  tilt.write(tilt_position); // Let the initial Tilt Servo position be 60 degree
   Serial.begin(9600); // Begin Serial Communication with that port or baudrate 
 }
 
