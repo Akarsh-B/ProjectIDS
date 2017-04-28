@@ -2,11 +2,9 @@
 
 Servo pan,tilt; //Basic Servo object declaration
 
-char pan_set=0,tilt_set=1; // Set up the characters as 0 for pan and 1 for tilt as an example of ID
-
 int pan_value=0,tilt_value=0; // Read the serial character either it can be 0 or 1 , pan & tile respectively
 
-char pan_position=90,tilt_position=90; // Keeping track of the current pan & tilt positions
+int pan_position=90,tilt_position=60; // Keeping track of the current pan & tilt positions
 
 
 
@@ -14,8 +12,8 @@ void setup() {
   // put your setup code here, to run once:
   pan.attach(9); // Attach Pan Servo to pin 9
   tilt.attach(10); // Attach Tilt Servo to pin 10 
-  pan.write(90);  // Let the initial Pan Servo position be 90 degree
-  tilt.write(60); // Let the initial Tilt Servo position be 90 degree
+  pan.write(pan_position);  // Let the initial Pan Servo position be 90 degree
+  tilt.write(tilt_position); // Let the initial Tilt Servo position be 90 degree
   Serial.begin(9600); // Begin Serial Communication with that port or baudrate 
 }
 
