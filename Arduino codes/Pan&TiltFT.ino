@@ -4,7 +4,7 @@ Servo pan,tilt; //Basic Servo object declaration
 
 int pan_value=0,tilt_value=0; // Read the serial character either it can be 0 or 1 , pan & tile respectively
 
-int pan_position=90,tilt_position=60; // Keeping track of the current pan & tilt positions
+int pan_position=90,tilt_position=60; // Initialize pan and tilt positions
 
 
 
