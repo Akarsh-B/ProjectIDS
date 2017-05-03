@@ -3,11 +3,11 @@
 Intrusion Detection Using RaspberryPi and Arduino
 ```
 Functions:
--RFID Detection[To be added]
+-RFID Detection
 -Face Detection
 -Face Recognition
 -Robot Movement using Video Streaming
--Face Tracking to be done
+-Face Tracking
 ```
 ## Usage
 
