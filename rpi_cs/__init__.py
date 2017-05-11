@@ -1,7 +1,7 @@
 from flask import Flask, render_template, Response, request
 from serial import Serial
 from threading import Thread
-from rpi_cs.face_detection import FaceDetection
+from rpi_cs.camera import Camera
 
 
 app = Flask(__name__)
@@ -15,20 +15,8 @@ def home():
 
 def gen(camera):
     """Video streaming generator function."""
-
-    frame_count = 0 # counts the number of frames received until now
-
     while True:
         frame = camera.get_frame()
-
-        # Use OpenCV to detect any face and send it to a server
-
-        # Look for a face every 24 frames
-        if frame_count % 24 == 0:
-            FaceDetection.detect(frame)
-
-        frame_count += 1
-
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
