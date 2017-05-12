@@ -29,5 +29,5 @@ void loop()
      Serial.print(mfrc522.uid.uidByte[i],HEX);
   }
   Serial.println();
-  delay(3000);
+  delay(500);
 }
