@@ -5,7 +5,7 @@ from rpi_cs.camera import Camera
 
 
 app = Flask(__name__)
-# ser = Serial("/dev/ttyUSB0", 9600)
+#ser = Serial("/dev/ttyACM0", 9600)
 
 
 @app.route('/')

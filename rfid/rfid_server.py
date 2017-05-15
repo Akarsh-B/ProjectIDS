@@ -3,7 +3,7 @@ import MySQLdb
 
 server_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
-host = '192.168.0.107' //Need to change this everytime
+host = '192.168.0.107'
 port = 12002         
 
 server_socket.bind((host, port))        

@@ -1,7 +1,7 @@
 import time
 import io
 import threading
-import picamera
+#import picamera
 
 
 class Camera(object):
