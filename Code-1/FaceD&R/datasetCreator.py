@@ -3,7 +3,8 @@ import numpy as np
 
 faceDetect=cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 cam=cv2.VideoCapture(0)
-
+cam.set(3,320)
+cam.set(4,240)
 id=input("ENter the User ID")
 sampleNum=0
 
