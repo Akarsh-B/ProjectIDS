@@ -23,13 +23,14 @@ def face_detect(): #function to recognoze a fcae
     	gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) #converting image to greyscale
     	faces=faceDetect.detectMultiScale(gray,1.3,5) #detecting a face
     	for (x,y,w,h) in faces:
-    		cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),2) #create a face box to highlight the face detected
-    		id,conf=rec.predict(gray[y:y+h,x:x+w]) #recognizing a face
+            cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),2) #create a face box to highlight the face detected
+            id,conf=rec.predict(gray[y:y+h,x:x+w]) #recognizing a face
             face_rec = str(id)
-    		cv2.putText(img,str(id),(x,y+h), font, 1, (200,255,155), 2, cv2.LINE_AA) #display uid in the face box
+            break
+            #cv2.putText(img,str(id),(x,y+h), font, 1, (200,255,155), 2, cv2.LINE_AA) #display uid in the face box
     	cv2.imshow("Face",img)
-    	if(cv2.waitKey(1) == ord('q')): #wait for the q key to be pressed to stop the recognition
-    		break;
+    	#if(cv2.waitKey(1) == ord('q')): #wait for the q key to be pressed to stop the recognition
+    		#break;
     cam.release()
     cv2.destroyAllWindows()
     return face_rec #return uid to calling function
