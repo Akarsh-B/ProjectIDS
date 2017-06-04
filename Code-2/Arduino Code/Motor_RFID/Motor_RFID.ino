@@ -38,7 +38,7 @@ void rfid();
 const int lf = 2;
 const int lb = 3;
 const int rf = 4;
-const int rb = 6;
+const int rb = 13;
 
 const int lf1 = 7;
 const int lb1 = 8;
@@ -58,7 +58,7 @@ void setup() {
   Serial.begin(9600);
   SPI.begin();
   mfrc522.PCD_Init();
-  pan.attach(11);  // attaches the servo on pin 10 (SERVO_1 on the Motor Drive Shield to the servo object 
+  pan.attach(12);  // attaches the servo on pin 10 (SERVO_1 on the Motor Drive Shield to the servo object 
   pan.write(90); // tells the servo to position at 90-degrees ie. facing forward.
   delay(1000); // delay for one seconds
  }
@@ -218,6 +218,8 @@ void rfid()
      count = 10;
   }
   Serial.println();
+  while(Serial.available()==0){}
+  count=Serial.parseInt();
   delay(1000);
 }
 
