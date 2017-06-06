@@ -1,13 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include <Servo.h>        //add Servo Motor library            
-#include <NewPing.h>      //add Ultrasonic sensor library
+#include <Servo.h>        //Servo Motor library            
+#include <NewPing.h>      //Ultrasonic sensor library
 #include<MFRC522.h>       // MFRC522 library
-#include<SPI.h>
+#include<SPI.h>           // MFRC522 Supportuing library
 
-#define SS_PIN 53
-#define RST_PIN 5
+#define SS_PIN 53         // RFID Pin
+#define RST_PIN 5         //RFID Pin
 #define TRIG_PIN A0 // Pin A0 on the Motor Drive Shield soldered to the ultrasonic sensor
 #define ECHO_PIN A1 // Pin A1 on the Motor Drive Shield soldered to the ultrasonic sensor
 #define MAX_DISTANCE 300 // sets maximum useable sensor measuring distance to 300cm
@@ -31,7 +31,7 @@ GND-GND
 */
 
 void turnLeft();
-void turnRight();
+void turnRight();    //Function Call definations
 void turnAround();
 void rfid();
 
@@ -39,7 +39,7 @@ const int lf = 2;
 const int lb = 3;
 const int rf = 4;
 const int rb = 13;
-
+                    //Pin attachments
 const int lf1 = 7;
 const int lb1 = 8;
 const int rf1 = 9;
@@ -57,7 +57,7 @@ int curDist = 0;
 void setup() {
   Serial.begin(9600);
   SPI.begin();
-  mfrc522.PCD_Init();
+  mfrc522.PCD_Init(); //Initialize MFRC522 library
   pan.attach(12);  // attaches the servo on pin 10 (SERVO_1 on the Motor Drive Shield to the servo object 
   pan.write(90); // tells the servo to position at 90-degrees ie. facing forward.
   delay(1000); // delay for one seconds
@@ -66,7 +66,7 @@ void setup() {
 
 //---------------------------------------------MAIN LOOP ------------------------------------------------------------------------------
 void loop() {
-  pan.write(90);  // move eyes forward
+  pan.write(90);  // move servo eyes forward
   delay(90);
   curDist = readPing();   // read distance
   if (curDist < COLL_DIST) {changePath();}  // if forward is blocked change direction
@@ -204,21 +204,21 @@ moveForward();
 void rfid()
 {
   delay(1000);
-  if ( ! mfrc522.PICC_IsNewCardPresent()) 
+  if ( ! mfrc522.PICC_IsNewCardPresent()) //Check if new card present 
   {
     return;
   }
-  if ( ! mfrc522.PICC_ReadCardSerial()) 
+  if ( ! mfrc522.PICC_ReadCardSerial()) //If new card present read the uid
   {
     return;
   }
   for (int i = 0; i < mfrc522.uid.size; i++) 
   {
-     Serial.print(mfrc522.uid.uidByte[i],HEX);
+     Serial.print(mfrc522.uid.uidByte[i],HEX);  //Send the UID to Pi via serial communication
      count = 10;
   }
-  Serial.println();
-  while(Serial.available()==0){}
+  Serial.println(); 
+  while(Serial.available()==0){}  //Wait for face recognition to complete if RFID is successful
   count=Serial.parseInt();
   delay(1000);
 }
